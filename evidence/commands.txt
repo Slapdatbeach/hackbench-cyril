@@ -10,10 +10,10 @@ curl -O https://298cf0a3-a6cc-46de-be6f-a408ac298372-00-x5l7y1a9kvhw.kirk.replit
 
 # === COMMANDES POUR TESTER LES CORRECTIFS (Après remediation) ===
 # 1. Tester le login (doit réussir)
-curl -X POST -d "username=admin&password=admin123" https://298cf0a3-a6cc-46de-be6f-a408ac298372-00-x5l7y1a9kvhw.kirk.replit.dev/login
+curl -X POST -d "username=admin&password=admin123" https://efe9e234-c84c-4dee-82e9-3c1bb32e1021-00-2lkvk2to791j5.janeway.replit.dev/login
 
 # 2. Tenter d'accéder à /flag SANS auth (doit échouer avec 403)
-curl -I https://298cf0a3-a6cc-46de-be6f-a408ac298372-00-x5l7y1a9kvhw.kirk.replit.dev/flag
+curl -I https://efe9e234-c84c-4dee-82e9-3c1bb32e1021-00-2lkvk2to791j5.janeway.replit.dev/flag
 
 # 3. Tester une injection dans /search (doit échouer avec 400)
-curl -X POST -d "q=test; DROP TABLE users" https://298cf0a3-a6cc-46de-be6f-a408ac298372-00-x5l7y1a9kvhw.kirk.replit.dev/search
+curl -X POST -d "q=test; DROP TABLE users" https://efe9e234-c84c-4dee-82e9-3c1bb32e1021-00-2lkvk2to791j5.janeway.replit.dev/search
